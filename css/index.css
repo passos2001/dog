@@ -1,0 +1,176 @@
+body {
+    font-family: 'Segoe UI', sans-serif;
+    margin: 0;
+    padding: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    position: relative;
+    background-color: #f8f8f8;
+    overflow-x: hidden;
+}
+
+.pattern-bg::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 200%;
+    height: 200%;
+    background-image:
+        radial-gradient(circle, #ccc 2px, transparent 3px),
+        radial-gradient(circle, #ccc 2px, transparent 3px);
+    background-position: 0 0, 30px 30px;
+    background-size: 60px 60px;
+    opacity: 0.15;
+    z-index: -1;
+}
+
+.carousel-container {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    z-index: 1;
+}
+
+.carousel {
+    width: 500px;
+    transition: all 0.5s ease;
+    position: relative;
+}
+
+.pet-card {
+    display: none;
+    background-color: #fff;
+    width: 100%;
+    border-radius: 20px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+    overflow: hidden;
+    text-align: center;
+    position: relative;
+    transform: scale(0.9);
+    opacity: 0;
+    transition: all 0.5s ease;
+}
+
+.pet-card.active {
+    display: block;
+    transform: scale(1);
+    opacity: 1;
+}
+
+.image-container {
+    width: 100%;
+    height: 350px;
+    background-color: #ddd;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.pet-image {
+    max-height: 100%;
+    max-width: 100%;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.pet-image:hover {
+    transform: scale(1.05);
+}
+
+.pet-info {
+    padding: 20px;
+}
+
+.pet-name {
+    font-size: 26px;
+    margin: 0;
+    color: #333;
+}
+
+.pet-desc {
+    font-size: 15px;
+    color: #666;
+    margin: 10px 0;
+}
+
+.extra-info {
+    display: none;
+    margin-top: 10px;
+    color: #444;
+}
+
+.button-group {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 10px;
+    flex-wrap: wrap;
+}
+
+.btn {
+    background-color: #4a90e2;
+    border: none;
+    color: white;
+    padding: 10px 15px;
+    font-size: 14px;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.btn:hover {
+    background-color: #357ab8;
+}
+
+.speech-bubble {
+    display: none;
+    position: relative;
+    background: #ffffff;
+    border: 1px solid #999;
+    border-radius: 10px;
+    padding: 10px 15px;
+    margin-top: 15px;
+    font-style: italic;
+    color: #333;
+    max-width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.speech-bubble::after {
+    content: '';
+    position: absolute;
+    top: -10px;
+    left: 20px;
+    border-width: 0 10px 10px;
+    border-style: solid;
+    border-color: transparent transparent #999 transparent;
+}
+
+.speech-bubble::before {
+    content: '';
+    position: absolute;
+    top: -8px;
+    left: 21px;
+    border-width: 0 9px 9px;
+    border-style: solid;
+    border-color: transparent transparent #ffffff transparent;
+}
+
+.nav-btn {
+    background-color: transparent;
+    font-size: 35px;
+    border: none;
+    cursor: pointer;
+    color: #444;
+    transition: transform 0.2s ease;
+}
+
+.nav-btn:hover {
+    transform: scale(1.3);
+    color: #000;
+}

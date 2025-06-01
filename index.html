@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Presentación de Mascotas</title>
+  <link rel="stylesheet" href="css/index.css">
+</head>
+<body>
+  <div class="pattern-bg"></div>
+
+  <div class="carousel-container">
+    <button class="nav-btn" onclick="changeCard(-1)">&#8592;</button>
+    <div class="carousel">
+
+      <div class="pet-card active">
+        <div class="image-container">
+          <img src="img/thanos.jpg" alt="Thanos" class="pet-image" onclick="openFullscreen(this)">
+        </div>
+        <div class="pet-info">
+          <h2 class="pet-name">Thanos</h2>
+          <p class="pet-desc">Thanos es un perro fuerte y vigilante, siempre atento y protector con su familia.</p>
+          <p><strong>Edad:</strong> 4 años</p>
+          <p><strong>Raza:</strong> Pastor Holandés</p>
+          <p><strong>Vacunas:</strong> Al día</p>
+          <div class="button-group">
+            <button class="btn" onclick="toggleInfo('info-thanos')">Ver más</button>
+            <button class="btn" onclick="showSpeech('speech-thanos')">Mensaje</button>
+          </div>
+          <div id="info-thanos" class="extra-info">
+            Thanos es muy activo y disfruta correr en el parque.
+          </div>
+          <div id="speech-thanos" class="speech-bubble">
+            Thanos: Laura, el snack estaba muy rico, gracias.
+          </div>
+        </div>
+      </div>
+
+      <div class="pet-card">
+        <div class="image-container">
+          <img src="img/sasuke.jpeg" alt="Sasuke" class="pet-image" onclick="openFullscreen(this)">
+        </div>
+        <div class="pet-info">
+          <h2 class="pet-name">Sasuke</h2>
+          <p class="pet-desc">Sasuke es un perro enérgico y curioso, con una mezcla única de fuerza y ternura.</p>
+          <p><strong>Edad:</strong> 5 años</p>
+          <p><strong>Raza:</strong> Criollo enrazado con Husky Siberiano</p>
+          <p><strong>Vacunas:</strong> Completas</p>
+          <div class="button-group">
+            <button class="btn" onclick="toggleInfo('info-sasuke')">Ver más</button>
+            <button class="btn" onclick="showSpeech('speech-sasuke')">Mensaje</button>
+          </div>
+          <div id="info-sasuke" class="extra-info">
+            Le encanta explorar y jugar con otros perros.
+          </div>
+          <div id="speech-sasuke" class="speech-bubble">
+            Sasuke: Hola Laura, Jose te quiere conocer.
+          </div>
+        </div>
+      </div>
+
+    </div>
+    <button class="nav-btn" onclick="changeCard(1)">&#8594;</button>
+  </div>
+
+  <script>
+    let currentIndex = 0;
+    const cards = document.querySelectorAll('.pet-card');
+
+    function changeCard(direction) {
+      cards[currentIndex].classList.remove('active');
+      currentIndex = (currentIndex + direction + cards.length) % cards.length;
+      cards[currentIndex].classList.add('active');
+    }
+
+    function toggleInfo(id) {
+      const section = document.getElementById(id);
+      section.style.display = section.style.display === 'block' ? 'none' : 'block';
+    }
+
+    function showSpeech(id) {
+      const bubble = document.getElementById(id);
+      bubble.style.display = bubble.style.display === 'block' ? 'none' : 'block';
+    }
+
+    function openFullscreen(img) {
+      if (img.requestFullscreen) {
+        img.requestFullscreen();
+      } else if (img.webkitRequestFullscreen) {
+        img.webkitRequestFullscreen();
+      } else if (img.msRequestFullscreen) {
+        img.msRequestFullscreen();
+      }
+    }
+  </script>
+</body>
+</html>
